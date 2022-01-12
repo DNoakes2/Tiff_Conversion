@@ -1,1 +1,7 @@
+Author: Dan Noakes
+Date: 1/12/2021
+Purpose: Convert a HEC-RAS tiff to JP2 or ECW format.
+Necessary libraries: GDAL
+How to use the code:
 
+Sources:
