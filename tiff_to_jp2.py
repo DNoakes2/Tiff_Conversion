@@ -30,20 +30,21 @@ src_ds = gdal.Open(in_path)
 
 # Scan through the raster bands and configure
 for i in range(1,src_ds.RasterCount +1): # Save bands as individual files
+    # To Do: Have the image compress so file size will be smaller then original image
     out_ds = gdal.Translate(out_path + 'output' + str(i) + '.jp2', src_ds, format='GTiff', bandList=[i])
     out_ds_name = (out_path + 'output' + str(i) + '.jp2')
     out_ds=None
-
+    
     ds = gdal.Open(out_ds_name, 1)
     ndv = ds.GetRasterBand(1).GetNoDataValue()
-    
+    # To Do: print out raster high and low values for user to see
     # Set the noValue for entered raster cell value
     # TODO: Request an input from the user to enter a specific value for removing backgroung.
     # E.g.: Please enter the background cell value to set as invisible. The default is "0".
 
 
     ## newdv = int(input("Please enter the background cell value to set as invisible. The default is "0": ") or "0")
-
+    
     newndv = 0
     band1 = ds.GetRasterBand(1).ReadAsArray()
     band1[band1==ndv] = newndv
@@ -54,3 +55,6 @@ for i in range(1,src_ds.RasterCount +1): # Save bands as individual files
 ## Set up Error Codes for error handling
 ## Check the link below.
 ## https://betterprogramming.pub/handling-errors-in-python-9f1b32952423
+
+## TODO: Ask user if they would like to see preview
+## if yes, then show with a window
