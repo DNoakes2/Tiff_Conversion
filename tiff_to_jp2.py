@@ -1,3 +1,7 @@
+#Date: Jan 12th 2021
+#Author: Dan Noakes
+#About: This code takes a tiff file generated in HEC RAS and converts it into a JP2 file that can be used in CAD or ArcGIS.
+
 import gdal
 import numpy as np
 from tkinter import filedialog
@@ -9,8 +13,6 @@ root = Tk()
 root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = (("tiff files","*.tif",),("all files","*.*")))
 print (root.filename)
 filename = root.filename
-
-
 
 root_dir = os.path.dirname(os.path.abspath(__file__)) # This is your Project Root
 print (root_dir)
